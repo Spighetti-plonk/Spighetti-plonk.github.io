@@ -106,7 +106,8 @@ onChildAdded(messagesRef, snapshot => {
 });
 
   
-});
+);
+
 
 
 
