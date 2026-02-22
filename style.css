@@ -1,29 +1,103 @@
-body {
+* {
+  box-sizing: border-box;
   font-family: Arial, sans-serif;
+}
+
+body {
   background: #111;
   color: white;
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
+/* ===== LOGOWANIE ===== */
+
+#login {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#login input {
+  padding: 8px;
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+/* ===== OKNO CZATU ===== */
+
 #chat {
-  background-image: url("images/mainbox.png");
+  width: 800px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+
+  /* ⬇️⬇️⬇️ TU JEST TWOJE PNG ⬇️⬇️⬇️ */
+  background-image: url("images/chat-bg.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 20px black;
+}
+
+/* ===== NAGŁÓWEK ===== */
+
+#chatHeader {
+  background: rgba(0,0,0,0.6);
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ===== ŚRODEK ===== */
+
+#content {
+  flex: 1;
+  display: flex;
 }
 
 #messages {
-  height: 300px;
+  flex: 3;
+  padding: 10px;
   overflow-y: auto;
-  margin-bottom: 10px;
+  background: rgba(0,0,0,0.4);
 }
 
-input, button {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-
+#messages div {
+  margin-bottom: 5px;
 }
 
+/* ===== LISTA ONLINE ===== */
+
+#usersOnline {
+  flex: 1;
+  background: rgba(0,0,0,0.6);
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* ===== DOLNY PASEK ===== */
+
+#inputBar {
+  display: flex;
+  background: rgba(0,0,0,0.7);
+}
+
+#inputBar input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+}
+
+#inputBar button {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
