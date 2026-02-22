@@ -13,10 +13,10 @@ import {
 
 // 🔹 Konfiguracja Firebase — wstaw swoje dane
 const firebaseConfig = {
-  apiKey: "TU_WSTAW_SWÓJ_API_KEY",
-  authDomain: "TU_WSTAW_SWÓJ_PROJEKT.firebaseapp.com",
-  databaseURL: "https://TU_WSTAW_SWÓJ_PROJEKT.firebaseio.com",
-  projectId: "TU_WSTAW_SWÓJ_PROJEKT"
+  apiKey: "AIzaSyCnVI_9ZNNcvShNvgYHYierdePN_p5r3kw",
+  authDomain: "test-strona-2a2f2.firebaseapp.com",
+  databaseURL: "https://test-strona-2a2f2-default-rtdb.firebaseio.com",
+  projectId: "test-strona-2a2f2"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -107,3 +107,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
