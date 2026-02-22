@@ -37,7 +37,7 @@ body {
   flex-direction: column;
 
   /* ⬇️⬇️⬇️ TU JEST TWOJE PNG ⬇️⬇️⬇️ */
-  background-image: url("images/chat-bg.png");
+  background-image: url("images/mainbox.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -101,3 +101,4 @@ body {
   border: none;
   cursor: pointer;
 }
+
