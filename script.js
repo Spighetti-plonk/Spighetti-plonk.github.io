@@ -1,4 +1,4 @@
-// 🔹 script.js — czat z heartbeat, Enter, lista online i dynamiczne PNG
+// 🔹 script.js — czat z heartbeat, Enter, lista online i dynamiczne tło czatu
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
   getDatabase,
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sendBtn = document.getElementById("send");
   const usersOnlineDiv = document.getElementById("usersOnline");
 
-  // ---- pole PNG
+  // ---- pole PNG dla tła czatu
   const styleInput = document.getElementById("styleInput");
 
   const messagesRef = ref(db, "messages");
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     error.textContent = "";
 
     if (!username) {
-      error.textContent = "Input username";
+      error.textContent = "Podaj nazwę użytkownika";
       return;
     }
 
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // blokada nazw tylko dla osób aktywnych w ostatnich 5 sekund
     if (userSnap.exists() && userSnap.val().lastSeen && (Date.now() - userSnap.val().lastSeen < 5000)) {
-      error.textContent = "Username alredy in use";
+      error.textContent = "Ta nazwa jest już używana przez kogoś online";
       return;
     }
 
@@ -135,15 +135,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ---- zmiana wyglądu strony przez PNG
+  // ---- zmiana tła czatu przez PNG
   styleInput.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = (event) => {
-      const imgData = event.target.result;
-      // np. tło całego czatu
+      const imgData = event.target.result; // PNG w formacie base64
       chatDiv.style.backgroundImage = `url(${imgData})`;
       chatDiv.style.backgroundSize = "cover";
       chatDiv.style.backgroundRepeat = "no-repeat";
