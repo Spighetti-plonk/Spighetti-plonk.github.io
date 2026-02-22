@@ -1,114 +1,84 @@
-// 🔹 Firebase – konfiguracja (WSTAW SWOJE DANE)
+// 🔹 script.js — wersja z tylko nazwą użytkownika
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
   getDatabase,
   ref,
   get,
   set,
+  onDisconnect,
   push,
-  onChildAdded,
-  onDisconnect
+  onChildAdded
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-import {
-  getAuth,
-  signInAnonymously
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
+// 🔹 Konfiguracja Firebase (wstaw swoje dane z Firebase)
 const firebaseConfig = {
   apiKey: "AIzaSyCnVI_9ZNNcvShNvgYHYierdePN_p5r3kw",
   authDomain: "test-strona-2a2f2.firebaseapp.com",
   databaseURL: "https://test-strona-2a2f2-default-rtdb.firebaseio.com",
-  projectId: "test-strona-2a2f2",
-  storageBucket: "test-strona-2a2f2.firebasestorage.app",
-  messagingSenderId: "434186354741",
-  appId: "1:434186354741:web:a722732e0178a30c73f17c"
+  projectId: "test-strona-2a2f2"
 };
-// 🔹 Połączenie z Firebase
+
+// 🔹 Inicjalizacja Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const auth = getAuth(app);
-signInAnonymously(auth);
 
-// 🔹 Elementy HTML
-const loginDiv = document.getElementById("login");
-const chatDiv = document.getElementById("chat");
-const loginBtn = document.getElementById("loginBtn");
-const error = document.getElementById("error");
+// 🔹 Poczekaj, aż cały HTML się wczyta
+document.addEventListener("DOMContentLoaded", () => {
+  // ---- elementy HTML
+  const loginDiv = document.getElementById("login");
+  const chatDiv = document.getElementById("chat");
+  const loginBtn = document.getElementById("loginBtn");
+  const usernameInput = document.getElementById("username");
+  const error = document.getElementById("error");
 
-const usernameInput = document.getElementById("username");
-const passwordInput = document.getElementById("password");
+  const messagesDiv = document.getElementById("messages");
+  const msgInput = document.getElementById("msg");
+  const sendBtn = document.getElementById("send");
 
-const messagesDiv = document.getElementById("messages");
-const msgInput = document.getElementById("msg");
-const sendBtn = document.getElementById("send");
+  // ---- kliknięcie „Wejdź”
+  loginBtn.onclick = async () => {
+    const username = usernameInput.value.trim();
 
-// 🔹 Kliknięcie „Wejdź”
-loginBtn.onclick = async () => {
-  console.log("Kliknięto przycisk Wejdź");
-  const username = document.getElementById("username").value.trim();
-  console.log("Wpisana nazwa:", username);
-loginBtn.onclick = async () => {
-  const username = usernameInput.value.trim();
-  const password = passwordInput.value;
+    error.textContent = "";
 
-  error.textContent = "";
+    if (!username) {
+      error.textContent = "Podaj nazwę użytkownika";
+      return;
+    }
 
-  if (!username) {
-    error.textContent = "Podaj nazwę użytkownika";
-    return;
-  }
+    // ---- sprawdzenie unikalności nazwy w Firebase
+    const userRef = ref(db, "users/" + username);
+    const userSnap = await get(userRef);
 
-  // 2️⃣ Sprawdź czy nazwa wolna
-  const userRef = ref(db, "users/" + username);
-  const userSnap = await get(userRef);
+    if (userSnap.exists()) {
+      error.textContent = "Ta nazwa jest już zajęta";
+      return;
+    }
 
-  if (userSnap.exists()) {
-    error.textContent = "Ta nazwa jest już zajęta";
-    return;
-  }
+    // ---- zapis użytkownika w Firebase
+    await set(userRef, { online: true, joinedAt: Date.now() });
+    onDisconnect(userRef).remove();
 
-  // 3️⃣ Zapisz użytkownika
-  await set(userRef, {
-    online: true,
-    joinedAt: Date.now()
+    // ---- przejście do czatu
+    window.currentUser = username;
+    loginDiv.style.display = "none";
+    chatDiv.style.display = "block";
+  };
+
+  // ---- wysyłanie wiadomości
+  const messagesRef = ref(db, "messages");
+  sendBtn.onclick = () => {
+    if (!msgInput.value.trim()) return;
+
+    push(messagesRef, { user: window.currentUser, text: msgInput.value, time: Date.now() });
+    msgInput.value = "";
+  };
+
+  // ---- odbieranie wiadomości na żywo
+  onChildAdded(messagesRef, snapshot => {
+    const data = snapshot.val();
+    const div = document.createElement("div");
+    div.textContent = `${data.user}: ${data.text}`;
+    messagesDiv.appendChild(div);
   });
-
-  // 4️⃣ Usuń po wyjściu
-  onDisconnect(userRef).remove();
-
-  // 5️⃣ Wejście do czatu
-  window.currentUser = username;
-  loginDiv.style.display = "none";
-  chatDiv.style.display = "block";
-};
-
-// 🔹 Wysyłanie wiadomości
-const messagesRef = ref(db, "messages");
-
-sendBtn.onclick = () => {
-  if (!msgInput.value.trim()) return;
-
-  push(messagesRef, {
-    user: window.currentUser,
-    text: msgInput.value,
-    time: Date.now()
-  });
-
-  msgInput.value = "";
-};
-
-// 🔹 Odbieranie wiadomości
-onChildAdded(messagesRef, snapshot => {
-  const data = snapshot.val();
-  const div = document.createElement("div");
-  div.textContent = `${data.user}: ${data.text}`;
-  messagesDiv.appendChild(div);
 });
-
-  
-);
-
-
-
-
-
