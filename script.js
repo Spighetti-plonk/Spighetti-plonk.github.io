@@ -12,7 +12,7 @@ import {
 
 // 🔹 konfiguracja Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyCnVI_9ZNNcvShNvgYHYierdePN_p5r3kw"
+  apiKey: "AIzaSyCnVI_9ZNNcvShNvgYHYierdePN_p5r3kw",
   authDomain: "test-strona-2a2f2.firebaseapp.com",
   databaseURL: "https://test-strona-2a2f2-default-rtdb.firebaseio.com",
   projectId: "test-strona-2a2f2"
@@ -83,4 +83,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
 
