@@ -6,7 +6,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="chat">
+
+  <!-- EKRAN LOGOWANIA -->
+  <div id="login">
+    <h2>Wejście do czatu</h2>
+
+    <input id="username" placeholder="Nazwa użytkownika">
+    <input id="password" type="password" placeholder="Hasło dostępu">
+
+    <button id="loginBtn">Wejdź</button>
+    <p id="error"></p>
+  </div>
+
+  <!-- CHAT (UKRYTY NA START) -->
+  <div id="chat" style="display:none;">
     <div id="messages"></div>
     <input id="msg" placeholder="Napisz wiadomość..." />
     <button id="send">Wyślij</button>
@@ -14,4 +27,5 @@
 
   <script type="module" src="script.js"></script>
 </body>
+
 </html>
