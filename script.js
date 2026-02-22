@@ -1,4 +1,4 @@
-// 🔹 Poprawiony script.js — pełny czat z listą online
+// 🔹 Poprawiony script.js — czat z listą online i przewijaniem
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
   getDatabase,
@@ -11,7 +11,7 @@ import {
   onValue
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// 🔹 Konfiguracja Firebase — wstaw swoje dane z Firebase Console
+// 🔹 Konfiguracja Firebase — wstaw swoje dane
 const firebaseConfig = {
   apiKey: "AIzaSyCnVI_9ZNNcvShNvgYHYierdePN_p5r3kw",
   authDomain: "test-strona-2a2f2.firebaseapp.com",
@@ -52,14 +52,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const userRef = ref(db, "users/" + username);
     const userSnap = await get(userRef);
 
-    if (userSnap.exists()) {
-      error.textContent = "Ta nazwa jest już zajęta";
+    // blokada tylko dla aktualnie zalogowanych
+    if (userSnap.exists() && userSnap.val().online) {
+      error.textContent = "Ta nazwa jest już używana przez kogoś online";
       return;
     }
 
-    // ---- zapis użytkownika w Firebase i onDisconnect
+    // zapis użytkownika jako online
     await set(userRef, { online: true, joinedAt: Date.now() });
-    onDisconnect(userRef).remove();
+    onDisconnect(userRef).remove(); // automatyczne usunięcie po wyjściu
     currentUserRef = userRef;
 
     window.currentUser = username;
@@ -81,6 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const div = document.createElement("div");
     div.textContent = `${data.user}: ${data.text}`;
     messagesDiv.appendChild(div);
+
+    // automatyczny scroll do najnowszej wiadomości
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   });
 
@@ -89,13 +92,16 @@ document.addEventListener("DOMContentLoaded", () => {
     usersOnlineDiv.innerHTML = "";
     const users = snapshot.val();
     if (users) {
-      Object.keys(users).forEach(username => {
-        const div = document.createElement("div");
-        const dot = document.createElement("div");
-        dot.classList.add("online-dot");
-        div.appendChild(dot);
-        div.appendChild(document.createTextNode(username));
-        usersOnlineDiv.appendChild(div);
+      Object.keys(users).forEach(u => {
+        // pokazujemy tylko tych, którzy są online
+        if (users[u].online) {
+          const div = document.createElement("div");
+          const dot = document.createElement("div");
+          dot.classList.add("online-dot");
+          div.appendChild(dot);
+          div.appendChild(document.createTextNode(u));
+          usersOnlineDiv.appendChild(div);
+        }
       });
     }
   });
