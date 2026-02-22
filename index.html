@@ -2,30 +2,38 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Chatroom</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Czat na żywo</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; }
+    #login, #chat { max-width: 400px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    input { width: 100%; padding: 10px; margin: 5px 0; box-sizing: border-box; }
+    button { padding: 10px 20px; margin-top: 10px; cursor: pointer; }
+    #messages { max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background: #fafafa; }
+    #messages div { margin-bottom: 5px; }
+    #error { color: red; margin-top: 5px; }
+  </style>
 </head>
 <body>
 
   <!-- EKRAN LOGOWANIA -->
   <div id="login">
     <h2>Wejście do czatu</h2>
-    
     <input id="username" placeholder="Nazwa użytkownika">
-
     <button id="loginBtn">Wejdź</button>
     <p id="error"></p>
   </div>
 
-  <!-- CHAT (UKRYTY NA START) -->
+  <!-- CZAT -->
   <div id="chat" style="display:none;">
+    <h2>Czat</h2>
     <div id="messages"></div>
-    <input id="msg" placeholder="Napisz wiadomość..." />
+    <input id="msg" placeholder="Napisz wiadomość...">
     <button id="send">Wyślij</button>
   </div>
 
+  <!-- SKRYPT JS -->
   <script type="module" src="script.js"></script>
+
 </body>
 </html>
-
-
