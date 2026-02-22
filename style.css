@@ -31,12 +31,12 @@ body {
 /* ===== OKNO CZATU ===== */
 
 #chat {
+  position: relative;
   width: 800px;
   height: 500px;
   display: flex;
   flex-direction: column;
 
-  /* ⬇️⬇️⬇️ TU JEST TWOJE PNG ⬇️⬇️⬇️ */
   background-image: url("images/mainbox.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -44,13 +44,11 @@ body {
 
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 0 20px black;
 }
-
 /* ===== NAGŁÓWEK ===== */
 
 #chatHeader {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.3);
   padding: 10px;
   text-align: center;
   font-weight: bold;
@@ -61,13 +59,15 @@ body {
 #content {
   flex: 1;
   display: flex;
+  min-height: 0;
+  align-items: stretch; /* 🔥 KLUCZOWE */
 }
 
 #messages {
-  flex: 3;
+  flex: 1;
   padding: 10px;
   overflow-y: auto;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.25);
 }
 
 #messages div {
@@ -77,17 +77,17 @@ body {
 /* ===== LISTA ONLINE ===== */
 
 #usersOnline {
-  flex: 1;
-  background: rgba(0,0,0,0.6);
+  width: 180px;
   padding: 10px;
+  background: rgba(0,0,0,0.25);
+  overflow-y: auto;
   font-size: 14px;
 }
-
 /* ===== DOLNY PASEK ===== */
 
 #inputBar {
   display: flex;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.3);
 }
 
 #inputBar input {
@@ -101,4 +101,5 @@ body {
   border: none;
   cursor: pointer;
 }
+
 
