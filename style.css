@@ -34,14 +34,10 @@ body {
   display: flex;
   flex-direction: column;
 
-  /* tło PNG dopasowane do kontenera */
   background-image: url("images/mainbox.png");
-  background-size: contain;      /* cały obraz widać, proporcje zachowane */
+  background-size: 100% 100%;  /* dokładnie pasuje do kontenera */
   background-repeat: no-repeat;
   background-position: center;
-
-  width: 1920px;                  /* rozmiar czatu */
-  height: 1080px;
 
   border-radius: 15px;
   overflow: hidden;
@@ -102,6 +98,7 @@ body {
   border: none;
   cursor: pointer;
 }
+
 
 
 
