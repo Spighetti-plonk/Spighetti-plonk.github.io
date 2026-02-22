@@ -40,8 +40,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 
-  width: 800px;                  /* rozmiar czatu */
-  height: 500px;
+  width: 1920px;                  /* rozmiar czatu */
+  height: 1080px;
 
   border-radius: 15px;
   overflow: hidden;
@@ -102,6 +102,7 @@ body {
   border: none;
   cursor: pointer;
 }
+
 
 
 
