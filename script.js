@@ -1,4 +1,4 @@
-// 🔹 script.js — czat z heartbeat, 5s filtr, przewijanie i Enter
+// 🔹 script.js — czat z heartbeat 5s, filtrem online, Enter działa poprawnie
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
   getDatabase,
@@ -17,7 +17,6 @@ const firebaseConfig = {
   databaseURL: "https://test-strona-2a2f2-default-rtdb.firebaseio.com",
   projectId: "test-strona-2a2f2"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
@@ -39,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentUserRef = null;
   let heartbeatInterval = null;
 
-  // ---- logowanie
+  // ---- funkcja logowania
   const login = async () => {
     const username = usernameInput.value.trim();
     error.textContent = "";
@@ -52,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentUserRef = ref(db, "users/" + username);
     const userSnap = await get(currentUserRef);
 
+    // blokada tylko dla aktywnych w ostatnich 5 sekund
     if (userSnap.exists() && userSnap.val().lastSeen && (Date.now() - userSnap.val().lastSeen < 5000)) {
       error.textContent = "Ta nazwa jest już używana przez kogoś online";
       return;
@@ -68,16 +68,21 @@ document.addEventListener("DOMContentLoaded", () => {
     window.currentUser = username;
     loginDiv.style.display = "none";
     chatDiv.style.display = "block";
+    msgInput.focus(); // od razu fokus na pole wiadomości
   };
 
+  // ---- logowanie przez kliknięcie
   loginBtn.addEventListener("click", login);
 
-  // ---- Enter przy logowaniu
+  // ---- logowanie przez Enter
   usernameInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") login();
+    if (e.key === "Enter") {
+      e.preventDefault();
+      login();
+    }
   });
 
-  // ---- wysyłanie wiadomości
+  // ---- wysyłanie wiadomości przez kliknięcie
   const sendMessage = () => {
     if (!msgInput.value.trim()) return;
 
@@ -88,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sendBtn.addEventListener("click", sendMessage);
 
-  // ---- Enter przy wysyłaniu wiadomości
+  // ---- wysyłanie wiadomości przez Enter
   msgInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -96,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ---- odbieranie wiadomości i przewijanie
+  // ---- odbieranie wiadomości i automatyczne przewijanie
   onChildAdded(messagesRef, snapshot => {
     const data = snapshot.val();
     const div = document.createElement("div");
@@ -130,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("beforeunload", () => {
     if (heartbeatInterval) clearInterval(heartbeatInterval);
     if (currentUserRef) {
-      set(currentUserRef, { online: false, lastSeen: Date.now() }); // oznacza offline
+      set(currentUserRef, { online: false, lastSeen: Date.now() });
     }
   });
 });
