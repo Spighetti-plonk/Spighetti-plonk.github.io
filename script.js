@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const userSnap = await get(currentUserRef);
 
     // blokada tylko dla aktualnie online
-    if (userSnap.exists() && userSnap.val().lastSeen && (Date.now() - userSnap.val().lastSeen < 15000)) {
+    if (userSnap.exists() && userSnap.val().lastSeen && (Date.now() - userSnap.val().lastSeen < 5000)) {
       error.textContent = "Ta nazwa jest już używana przez kogoś online";
       return;
     }
@@ -118,3 +118,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
