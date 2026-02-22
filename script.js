@@ -44,6 +44,10 @@ const sendBtn = document.getElementById("send");
 
 // 🔹 Kliknięcie „Wejdź”
 loginBtn.onclick = async () => {
+  console.log("Kliknięto przycisk Wejdź");
+  const username = document.getElementById("username").value.trim();
+  console.log("Wpisana nazwa:", username);
+loginBtn.onclick = async () => {
   const username = usernameInput.value.trim();
   const password = passwordInput.value;
 
@@ -100,4 +104,5 @@ onChildAdded(messagesRef, snapshot => {
   div.textContent = `${data.user}: ${data.text}`;
   messagesDiv.appendChild(div);
 });
+
 
