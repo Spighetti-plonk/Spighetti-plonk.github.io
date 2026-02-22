@@ -8,10 +8,10 @@ body {
 }
 
 #chat {
-  width: 400px;
-  background: #222;
-  padding: 15px;
-  border-radius: 8px;
+  background-image: url("images/chat-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #messages {
@@ -24,4 +24,5 @@ input, button {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
+
 }
