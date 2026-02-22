@@ -1,3 +1,4 @@
+// 🔹 script.js — gotowy do GitHub Pages i Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
   getDatabase,
@@ -10,7 +11,7 @@ import {
   onValue
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// 🔹 konfiguracja Firebase
+// 🔹 KONFIGURACJA FIREBASE — wklej swoje dane z Firebase Console
 const firebaseConfig = {
   apiKey: "AIzaSyCnVI_9ZNNcvShNvgYHYierdePN_p5r3kw",
   authDomain: "test-strona-2a2f2.firebaseapp.com",
@@ -18,6 +19,7 @@ const firebaseConfig = {
   projectId: "test-strona-2a2f2"
 };
 
+// 🔹 Inicjalizacja Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
@@ -40,12 +42,21 @@ document.addEventListener("DOMContentLoaded", () => {
   loginBtn.onclick = async () => {
     const username = usernameInput.value.trim();
     error.textContent = "";
-    if (!username) { error.textContent = "Podaj nazwę użytkownika"; return; }
+
+    if (!username) {
+      error.textContent = "Podaj nazwę użytkownika";
+      return;
+    }
 
     const userRef = ref(db, "users/" + username);
     const userSnap = await get(userRef);
-    if (userSnap.exists()) { error.textContent = "Ta nazwa jest już zajęta"; return; }
 
+    if (userSnap.exists()) {
+      error.textContent = "Ta nazwa jest już zajęta";
+      return;
+    }
+
+    // ---- zapis użytkownika w Firebase
     await set(userRef, { online: true, joinedAt: Date.now() });
     onDisconnect(userRef).remove();
 
@@ -57,20 +68,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---- wysyłanie wiadomości
   sendBtn.onclick = () => {
     if (!msgInput.value.trim()) return;
+
     push(messagesRef, { user: window.currentUser, text: msgInput.value, time: Date.now() });
     msgInput.value = "";
   };
 
-  // ---- odbieranie wiadomości i scroll
+  // ---- odbieranie wiadomości i automatyczny scroll
   onChildAdded(messagesRef, snapshot => {
     const data = snapshot.val();
     const div = document.createElement("div");
     div.textContent = `${data.user}: ${data.text}`;
     messagesDiv.appendChild(div);
-    messagesDiv.scrollTop = messagesDiv.scrollHeight; // automatyczny scroll
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
   });
 
-  // ---- lista online
+  // ---- lista online z zieloną kropką
   onValue(usersRef, snapshot => {
     usersOnlineDiv.innerHTML = "";
     snapshot.forEach(childSnap => {
@@ -83,4 +95,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
