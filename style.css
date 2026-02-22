@@ -31,17 +31,12 @@ body {
 /* ===== OKNO CZATU ===== */
 
 #chat {
-  position: relative;
-  width: 800px;
-  height: 500px;
   display: flex;
   flex-direction: column;
-
-  background-image: url("images/mainbox.png");
+  background-image: url("images/mainbox.png"); /* twoje PNG */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
   border-radius: 15px;
   overflow: hidden;
 }
@@ -101,6 +96,7 @@ body {
   border: none;
   cursor: pointer;
 }
+
 
 
 
