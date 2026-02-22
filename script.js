@@ -1,4 +1,4 @@
-// 🔹 script.js — gotowy do GitHub Pages i Firebase
+// 🔹 Poprawiony script.js — pełny czat z listą online
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
   getDatabase,
@@ -11,7 +11,7 @@ import {
   onValue
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// 🔹 KONFIGURACJA FIREBASE — wklej swoje dane z Firebase Console
+// 🔹 Konfiguracja Firebase — wstaw swoje dane z Firebase Console
 const firebaseConfig = {
   apiKey: "AIzaSyCnVI_9ZNNcvShNvgYHYierdePN_p5r3kw",
   authDomain: "test-strona-2a2f2.firebaseapp.com",
@@ -19,7 +19,6 @@ const firebaseConfig = {
   projectId: "test-strona-2a2f2"
 };
 
-// 🔹 Inicjalizacja Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
@@ -37,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const messagesRef = ref(db, "messages");
   const usersRef = ref(db, "users");
+
+  let currentUserRef = null;
 
   // ---- logowanie
   loginBtn.onclick = async () => {
@@ -56,9 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ---- zapis użytkownika w Firebase
+    // ---- zapis użytkownika w Firebase i onDisconnect
     await set(userRef, { online: true, joinedAt: Date.now() });
     onDisconnect(userRef).remove();
+    currentUserRef = userRef;
 
     window.currentUser = username;
     loginDiv.style.display = "none";
@@ -85,13 +87,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---- lista online z zieloną kropką
   onValue(usersRef, snapshot => {
     usersOnlineDiv.innerHTML = "";
-    snapshot.forEach(childSnap => {
-      const div = document.createElement("div");
-      const dot = document.createElement("div");
-      dot.classList.add("online-dot");
-      div.appendChild(dot);
-      div.appendChild(document.createTextNode(childSnap.key));
-      usersOnlineDiv.appendChild(div);
-    });
+    const users = snapshot.val();
+    if (users) {
+      Object.keys(users).forEach(username => {
+        const div = document.createElement("div");
+        const dot = document.createElement("div");
+        dot.classList.add("online-dot");
+        div.appendChild(dot);
+        div.appendChild(document.createTextNode(username));
+        usersOnlineDiv.appendChild(div);
+      });
+    }
   });
 });
