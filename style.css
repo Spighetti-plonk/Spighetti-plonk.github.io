@@ -39,7 +39,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 
-  border-radius: 150px;
+  border-radius: 15px;
   overflow: hidden;
 }
 /* ===== NAGŁÓWEK ===== */
@@ -62,7 +62,7 @@ body {
 
 #messages {
   flex: 1;
-  padding: 1000px;
+  padding: 200px;
   overflow-y: auto;
   background: rgba(0,0,0,0.1);
 }
@@ -98,6 +98,7 @@ body {
   border: none;
   cursor: pointer;
 }
+
 
 
 
