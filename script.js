@@ -54,13 +54,6 @@ loginBtn.onclick = async () => {
     return;
   }
 
-  // 1️⃣ Sprawdź hasło
-  const passSnap = await get(ref(db, "settings/roomPassword"));
-  if (!passSnap.exists() || passSnap.val() !== password) {
-    error.textContent = "Niepoprawne hasło";
-    return;
-  }
-
   // 2️⃣ Sprawdź czy nazwa wolna
   const userRef = ref(db, "users/" + username);
   const userSnap = await get(userRef);
@@ -107,3 +100,4 @@ onChildAdded(messagesRef, snapshot => {
   div.textContent = `${data.user}: ${data.text}`;
   messagesDiv.appendChild(div);
 });
+
