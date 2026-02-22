@@ -1,4 +1,4 @@
-// 🔹 Poprawiony script.js — czat z listą online i przewijaniem
+// 🔹 Poprawiony script.js z listą online i logowaniem tylko online
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
   getDatabase,
@@ -13,10 +13,10 @@ import {
 
 // 🔹 Konfiguracja Firebase — wstaw swoje dane
 const firebaseConfig = {
-  apiKey: "AIzaSyCnVI_9ZNNcvShNvgYHYierdePN_p5r3kw",
-  authDomain: "test-strona-2a2f2.firebaseapp.com",
-  databaseURL: "https://test-strona-2a2f2-default-rtdb.firebaseio.com",
-  projectId: "test-strona-2a2f2"
+  apiKey: "TU_WSTAW_SWÓJ_API_KEY",
+  authDomain: "TU_WSTAW_SWÓJ_PROJEKT.firebaseapp.com",
+  databaseURL: "https://TU_WSTAW_SWÓJ_PROJEKT.firebaseio.com",
+  projectId: "TU_WSTAW_SWÓJ_PROJEKT"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const userRef = ref(db, "users/" + username);
     const userSnap = await get(userRef);
 
-    // blokada tylko dla aktualnie zalogowanych
+    // blokada tylko dla osób aktualnie online
     if (userSnap.exists() && userSnap.val().online) {
       error.textContent = "Ta nazwa jest już używana przez kogoś online";
       return;
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // zapis użytkownika jako online
     await set(userRef, { online: true, joinedAt: Date.now() });
-    onDisconnect(userRef).remove(); // automatyczne usunięcie po wyjściu
+    onDisconnect(userRef).remove();
     currentUserRef = userRef;
 
     window.currentUser = username;
@@ -74,27 +74,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     push(messagesRef, { user: window.currentUser, text: msgInput.value, time: Date.now() });
     msgInput.value = "";
+
+    // przewijanie czatu do najnowszej wiadomości
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
   };
 
-  // ---- odbieranie wiadomości i automatyczny scroll
+  // ---- odbieranie wiadomości
   onChildAdded(messagesRef, snapshot => {
     const data = snapshot.val();
     const div = document.createElement("div");
     div.textContent = `${data.user}: ${data.text}`;
     messagesDiv.appendChild(div);
 
-    // automatyczny scroll do najnowszej wiadomości
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   });
 
-  // ---- lista online z zieloną kropką
+  // ---- lista online
   onValue(usersRef, snapshot => {
     usersOnlineDiv.innerHTML = "";
     const users = snapshot.val();
     if (users) {
       Object.keys(users).forEach(u => {
-        // pokazujemy tylko tych, którzy są online
-        if (users[u].online) {
+        if (users[u].online) { // tylko aktywni
           const div = document.createElement("div");
           const dot = document.createElement("div");
           dot.classList.add("online-dot");
@@ -106,4 +107,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
