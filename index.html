@@ -5,13 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Czat na żywo</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; }
-    #login, #chat { max-width: 400px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; display: flex; justify-content: center; }
+    #login, #chat { max-width: 600px; width: 100%; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
     input { width: 100%; padding: 10px; margin: 5px 0; box-sizing: border-box; }
     button { padding: 10px 20px; margin-top: 10px; cursor: pointer; }
     #messages { max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background: #fafafa; }
     #messages div { margin-bottom: 5px; }
+    #usersOnline { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background: #f9f9f9; }
+    #usersOnline div { margin-bottom: 5px; display: flex; align-items: center; }
+    .online-dot { width: 10px; height: 10px; border-radius: 50%; background: green; margin-right: 5px; }
     #error { color: red; margin-top: 5px; }
+    #chatContainer { display: flex; justify-content: space-between; }
+    #chatArea { flex: 1; margin-right: 10px; }
+    #onlineArea { width: 150px; }
   </style>
 </head>
 <body>
@@ -27,9 +33,17 @@
   <!-- CZAT -->
   <div id="chat" style="display:none;">
     <h2>Czat</h2>
-    <div id="messages"></div>
-    <input id="msg" placeholder="Napisz wiadomość...">
-    <button id="send">Wyślij</button>
+    <div id="chatContainer">
+      <div id="chatArea">
+        <div id="messages"></div>
+        <input id="msg" placeholder="Napisz wiadomość...">
+        <button id="send">Wyślij</button>
+      </div>
+      <div id="onlineArea">
+        <h3>Online</h3>
+        <div id="usersOnline"></div>
+      </div>
+    </div>
   </div>
 
   <!-- SKRYPT JS -->
