@@ -1,4 +1,4 @@
-// 🔹 script.js — czat z poprawną listą online i heartbeat
+// 🔹 script.js — czat z heartbeat, 5s filtr, przewijanie i Enter
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
   getDatabase,
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let heartbeatInterval = null;
 
   // ---- logowanie
-  loginBtn.onclick = async () => {
+  const login = async () => {
     const username = usernameInput.value.trim();
     error.textContent = "";
 
@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     currentUserRef = ref(db, "users/" + username);
     const userSnap = await get(currentUserRef);
 
-    // blokada tylko dla aktualnie online
     if (userSnap.exists() && userSnap.val().lastSeen && (Date.now() - userSnap.val().lastSeen < 5000)) {
       error.textContent = "Ta nazwa jest już używana przez kogoś online";
       return;
@@ -61,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ustaw status online i lastSeen
     await set(currentUserRef, { online: true, lastSeen: Date.now() });
 
-    // heartbeat co 5 sekund, aby status był aktualny
+    // heartbeat co 5 sekund
     heartbeatInterval = setInterval(() => {
       set(currentUserRef, { online: true, lastSeen: Date.now() });
     }, 5000);
@@ -71,14 +70,31 @@ document.addEventListener("DOMContentLoaded", () => {
     chatDiv.style.display = "block";
   };
 
+  loginBtn.addEventListener("click", login);
+
+  // ---- Enter przy logowaniu
+  usernameInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") login();
+  });
+
   // ---- wysyłanie wiadomości
-  sendBtn.onclick = () => {
+  const sendMessage = () => {
     if (!msgInput.value.trim()) return;
 
     push(messagesRef, { user: window.currentUser, text: msgInput.value, time: Date.now() });
     msgInput.value = "";
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   };
+
+  sendBtn.addEventListener("click", sendMessage);
+
+  // ---- Enter przy wysyłaniu wiadomości
+  msgInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
 
   // ---- odbieranie wiadomości i przewijanie
   onChildAdded(messagesRef, snapshot => {
@@ -89,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   });
 
-  // ---- lista online (tylko aktywni w ostatnich 15 sek)
+  // ---- lista online (tylko aktywni w ostatnich 5 sekund)
   onValue(usersRef, snapshot => {
     usersOnlineDiv.innerHTML = "";
     const users = snapshot.val();
@@ -98,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (users) {
       Object.keys(users).forEach(u => {
         const user = users[u];
-        if (user.lastSeen && now - user.lastSeen < 15000) {
+        if (user.lastSeen && now - user.lastSeen < 5000) {
           const div = document.createElement("div");
           const dot = document.createElement("div");
           dot.classList.add("online-dot");
@@ -118,4 +134,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
