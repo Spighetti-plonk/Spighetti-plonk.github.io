@@ -105,4 +105,7 @@ onChildAdded(messagesRef, snapshot => {
   messagesDiv.appendChild(div);
 });
 
+});
+
+
 
