@@ -33,10 +33,16 @@ body {
 #chat {
   display: flex;
   flex-direction: column;
-  background-image: url("images/mainbox.png"); /* twoje PNG */
-  background-size: cover;
+
+  /* tło PNG dopasowane do kontenera */
+  background-image: url("images/mainbox.png");
+  background-size: contain;      /* cały obraz widać, proporcje zachowane */
   background-repeat: no-repeat;
   background-position: center;
+
+  width: 800px;                  /* rozmiar czatu */
+  height: 500px;
+
   border-radius: 15px;
   overflow: hidden;
 }
@@ -96,6 +102,7 @@ body {
   border: none;
   cursor: pointer;
 }
+
 
 
 
