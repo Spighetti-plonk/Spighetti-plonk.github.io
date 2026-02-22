@@ -62,7 +62,7 @@ body {
 
 #messages {
   flex: 1;
-  padding: 100px;
+  padding: 1000px;
   overflow-y: auto;
   background: rgba(0,0,0,0.1);
 }
@@ -98,6 +98,7 @@ body {
   border: none;
   cursor: pointer;
 }
+
 
 
 
