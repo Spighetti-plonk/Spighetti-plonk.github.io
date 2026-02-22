@@ -1,4 +1,4 @@
-// 🔹 script.js — czat z heartbeat, Enter, lista online i dynamiczne tło czatu
+// 🔹 script.js — czat z heartbeat, Enter, lista online i tło PNG
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
   getDatabase,
@@ -34,9 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const sendBtn = document.getElementById("send");
   const usersOnlineDiv = document.getElementById("usersOnline");
 
-  // ---- pole PNG dla tła czatu
-  const styleInput = document.getElementById("styleInput");
-
   const messagesRef = ref(db, "messages");
   const usersRef = ref(db, "users");
 
@@ -49,16 +46,16 @@ document.addEventListener("DOMContentLoaded", () => {
     error.textContent = "";
 
     if (!username) {
-      error.textContent = "Podaj nazwę użytkownika";
+      error.textContent = "Input username";
       return;
     }
 
     currentUserRef = ref(db, "users/" + username);
     const userSnap = await get(currentUserRef);
 
-    // blokada nazw tylko dla osób aktywnych w ostatnich 5 sekund
+    // blokada nazw dla osób aktywnych w ostatnich 5 sekund
     if (userSnap.exists() && userSnap.val().lastSeen && (Date.now() - userSnap.val().lastSeen < 5000)) {
-      error.textContent = "Ta nazwa jest już używana przez kogoś online";
+      error.textContent = "Username alredy in use";
       return;
     }
 
@@ -71,9 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
 
     window.currentUser = username;
+
+    // 🔹 KLUCZOWA POPRAWKA: pokaz czat w trybie flex
     loginDiv.style.display = "none";
-    chatDiv.style.display = "block";
-    msgInput.focus(); // od razu fokus na pole wiadomości
+    chatDiv.style.display = "flex";
+
+    msgInput.focus();
   };
 
   loginBtn.addEventListener("click", login);
@@ -133,22 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     }
-  });
-
-  // ---- zmiana tła czatu przez PNG
-  styleInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const imgData = event.target.result; // PNG w formacie base64
-      chatDiv.style.backgroundImage = `url(${imgData})`;
-      chatDiv.style.backgroundSize = "cover";
-      chatDiv.style.backgroundRepeat = "no-repeat";
-      chatDiv.style.backgroundPosition = "center";
-    };
-    reader.readAsDataURL(file);
   });
 
   // ---- zatrzymanie heartbeat przy zamknięciu strony
