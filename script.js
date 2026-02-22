@@ -1,4 +1,4 @@
-// 🔹 script.js — czat z heartbeat 5s, filtrem online, Enter działa poprawnie
+// 🔹 script.js — czat z heartbeat, Enter, lista online i dynamiczne PNG
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
   getDatabase,
@@ -17,10 +17,12 @@ const firebaseConfig = {
   databaseURL: "https://test-strona-2a2f2-default-rtdb.firebaseio.com",
   projectId: "test-strona-2a2f2"
 };
+
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 document.addEventListener("DOMContentLoaded", () => {
+  // ---- elementy DOM
   const loginDiv = document.getElementById("login");
   const chatDiv = document.getElementById("chat");
   const loginBtn = document.getElementById("loginBtn");
@@ -32,28 +34,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const sendBtn = document.getElementById("send");
   const usersOnlineDiv = document.getElementById("usersOnline");
 
+  // ---- pole PNG
+  const styleInput = document.getElementById("styleInput");
+
   const messagesRef = ref(db, "messages");
   const usersRef = ref(db, "users");
 
   let currentUserRef = null;
   let heartbeatInterval = null;
 
-  // ---- funkcja logowania
+  // ---- logowanie
   const login = async () => {
     const username = usernameInput.value.trim();
     error.textContent = "";
 
     if (!username) {
-      error.textContent = "Podaj nazwę użytkownika";
+      error.textContent = "Input username";
       return;
     }
 
     currentUserRef = ref(db, "users/" + username);
     const userSnap = await get(currentUserRef);
 
-    // blokada tylko dla aktywnych w ostatnich 5 sekund
+    // blokada nazw tylko dla osób aktywnych w ostatnich 5 sekund
     if (userSnap.exists() && userSnap.val().lastSeen && (Date.now() - userSnap.val().lastSeen < 5000)) {
-      error.textContent = "Ta nazwa jest już używana przez kogoś online";
+      error.textContent = "Username alredy in use";
       return;
     }
 
@@ -71,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
     msgInput.focus(); // od razu fokus na pole wiadomości
   };
 
-  // ---- logowanie przez kliknięcie
   loginBtn.addEventListener("click", login);
 
   // ---- logowanie przez Enter
@@ -82,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ---- wysyłanie wiadomości przez kliknięcie
+  // ---- wysyłanie wiadomości
   const sendMessage = () => {
     if (!msgInput.value.trim()) return;
 
@@ -101,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ---- odbieranie wiadomości i automatyczne przewijanie
+  // ---- odbieranie wiadomości i przewijanie
   onChildAdded(messagesRef, snapshot => {
     const data = snapshot.val();
     const div = document.createElement("div");
@@ -110,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   });
 
-  // ---- lista online (tylko aktywni w ostatnich 5 sekund)
+  // ---- lista online (aktywni w ostatnich 5 sekund)
   onValue(usersRef, snapshot => {
     usersOnlineDiv.innerHTML = "";
     const users = snapshot.val();
@@ -129,6 +133,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     }
+  });
+
+  // ---- zmiana wyglądu strony przez PNG
+  styleInput.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const imgData = event.target.result;
+      // np. tło całego czatu
+      chatDiv.style.backgroundImage = `url(${imgData})`;
+      chatDiv.style.backgroundSize = "cover";
+      chatDiv.style.backgroundRepeat = "no-repeat";
+      chatDiv.style.backgroundPosition = "center";
+    };
+    reader.readAsDataURL(file);
   });
 
   // ---- zatrzymanie heartbeat przy zamknięciu strony
