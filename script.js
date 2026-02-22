@@ -81,4 +81,5 @@ document.addEventListener("DOMContentLoaded", () => {
     div.textContent = `${data.user}: ${data.text}`;
     messagesDiv.appendChild(div);
   });
-});
+};
+
