@@ -37,11 +37,19 @@ h1 {
 
 /* CZAT */
 #chat {
-  display: none; /* 🔥 NA START UKRYTY */
-  margin-top: 20px;
-  padding: 20px;
-  background: #333;
-  border-radius: 10px;
+  display: none;              /* na start ukryty */
+  width: 800px;
+  height: 500px;
+
+  flex-direction: column;
+
+  background-image: url("images/chatbackground.png");
+  background-size: contain;   /* 🔥 KLUCZ */
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 /* okno czatu*/
@@ -90,3 +98,4 @@ h1 {
   cursor: pointer;
 }
   
+
