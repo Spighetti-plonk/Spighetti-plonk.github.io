@@ -1,6 +1,6 @@
 body {
   backgorund: #111;
-  color: black;
+  color: white;
   font-family: Arial;
   display: flex;
   justify-content: center;
@@ -17,7 +17,7 @@ body {
 }
 
 #chat {
-  display: "none";
+  display: none;
 }
 
 input {
@@ -31,4 +31,5 @@ button {
   padding: 10px;
   cursor: pointer;
 }
+
 
