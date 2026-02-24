@@ -9,14 +9,14 @@ body {
   margin: 0;
 }
 
-#login, #chat {
+ #login, #chat {
   width: 400px;
   padding: 20px;
   border-radius: 10px;
   backgorund: #222;
 }
 
-#chat {
+ #chat {
   display: none;
 }
 
@@ -31,5 +31,6 @@ button {
   padding: 10px;
   cursor: pointer;
 }
+
 
 
