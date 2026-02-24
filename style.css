@@ -1,21 +1,26 @@
 body {
-  backgorund: #111;
-  color: white;
-  font-family: Arial;
+  background: #111;
+  margin: 0;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+  font-family: Arial;
+  color: white;
 }
 
-#login, #chat {
+/*główny kontener*/
+#app {
   width: 400px;
+}
+
+/*login i czat*/
+#login, #chat {
+  background: #222;
   padding: 20px;
   border-radius: 10px;
-  backgorund: #222;
 }
 
+/*ukrywanie czatu*/
 #chat {
   display: none;
 }
@@ -32,6 +37,7 @@ button {
   cursor: pointer;
 }
 
-
-
-
+#error {
+  color: red;
+  margin-top: 5px;
+}
