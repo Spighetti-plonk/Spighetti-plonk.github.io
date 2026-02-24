@@ -1,3 +1,4 @@
+// chatDiv.style.display = "flex";
 document.addEventListener("DOMContentLoaded", () => {
   const loginDiv = document.getElementById("login");
   const chatDiv = document.getElementById("chat");
@@ -53,4 +54,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
