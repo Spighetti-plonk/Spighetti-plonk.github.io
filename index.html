@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Czat</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>NAPRAWDE POWAŻNY CHATROOM</title>
 </head>
 <body>
+  
+ LOGOWANIE
+  <div id="login">
+    <h2>Logowanie</h2>
+    <input id="username" placeholder="Your name">
+    <button id="loginBtn">Enter</button>
+    <div id="error"></div>
+  </div>
 
-<div id="login">
-  <h2>Logowanie</h2>
-  <input id="username" placeholder="Nazwa użytkownika">
-  <button id="loginBtn">Wejdź</button>
-  <div id="error"></div>
-</div>
+  CZAT
+  <div id=""chat">
+    <div id="chatHeader">Chat</div>
 
-<div id="chat" style="display:none;">
-  <div id="chatHeader">Czat</div>
-
-  <div id="content">
     <div id="messages"></div>
-    <div id="usersOnline"></div>
+
+    <div id="inputBar">
+      <input id="msg" placeholder="Send message">
+      <button id="send">Send</button>
+    </div>
   </div>
 
-  <div id="inputBar">
-    <input id="msg" placeholder="Wpisz wiadomość">
-    <button id="send">Wyślij</button>
-  </div>
-</div>
-
-<script type="module" src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
