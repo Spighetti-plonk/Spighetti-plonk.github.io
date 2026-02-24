@@ -17,7 +17,7 @@ body {
 }
 
 #chat {
-  display: none;
+  display: "none";
 }
 
 input {
@@ -31,3 +31,4 @@ button {
   padding: 10px;
   cursor: pointer;
 }
+
