@@ -22,6 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
     loginDiv.style.display = "none";
     chatDiv.style.display = "flex";
   });
+  
+  usernameInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    loginBtn.click();
+  }
+});
 
   // WYSYŁANIE WIADOMOŚCI
   const sendMessage = () => {
@@ -46,3 +53,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
