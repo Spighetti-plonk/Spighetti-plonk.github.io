@@ -38,7 +38,7 @@ h1 {
 /* CZAT */
 #chat {
   display: none;              /* na start ukryty */
-  width: 800px;
+  width: 700px;
   height: 500px;
 
 
@@ -97,6 +97,7 @@ h1 {
   cursor: pointer;
 }
   
+
 
 
 
