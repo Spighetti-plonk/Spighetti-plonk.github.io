@@ -1,43 +1,45 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
 body {
   background: #111;
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  font-family: Arial;
   color: white;
+  height: 100vh;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* środek w pionie */
+  align-items: center;     /* środek w poziomie */
 }
 
-/*główny kontener*/
-#app {
-  width: 400px;
+h1 {
+  margin-bottom: 20px;
 }
 
-/*login i czat*/
-#login, #chat {
+/* LOGOWANIE */
+#login {
   background: #222;
   padding: 20px;
   border-radius: 10px;
 }
 
-/*ukrywanie czatu*/
+#login input {
+  padding: 10px;
+}
+
+#login button {
+  padding: 10px;
+  margin-left: 10px;
+}
+
+/* CZAT */
 #chat {
-  display: none;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  cursor: pointer;
-}
-
-#error {
-  color: red;
-  margin-top: 5px;
+  display: none; /* 🔥 NA START UKRYTY */
+  margin-top: 20px;
+  padding: 20px;
+  background: #333;
+  border-radius: 10px;
 }
