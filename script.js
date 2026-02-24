@@ -1,20 +1,19 @@
-const loginDiv = document.getElementById("login");
-const chatDiv = document.getElementById("chat");
-const loginBtn = document.getElementById("loginBtn");
-const usernameInput = document.getElementById("username");
-const errorDiv = document.getElementById("error");
+document.addEventListener("DOMContentLoaded", () => {
+  const loginDiv = document.getElementById("login");
+  const chatDiv = document.getElementById("chat");
+  const loginBtn = document.getElementById("loginBtn");
+  const usernameInput = document.getElementById("username");
 
-loginBtn.addEventListiner("click", () => {
-  const username = usernameInput.value;
+  loginBtn.addEventListener("click", () => {
+    const username = usernameInput.value.trim();
 
-  if (usrename === "") {
-    errorDiv.textContext = "Input username";
-    return;
-  }
+    if (username === "") {
+      alert("Podaj nazwę użytkownika");
+      return;
+    }
 
-
-loginDiv.style.display = "none";
-
-chatDiv.style.display = "block";
-
+    loginDiv.style.display = "none";
+    chatDiv.style.display = "block";
+    chatDiv.innerHTML = `Witaj <b>${username}</b> 👋`;
+  });
 });
