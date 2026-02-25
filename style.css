@@ -36,13 +36,7 @@ h1 {
 }
 
 /* CZAT */
-#chat {
-  width: 400px;
-  height: 500px;
-  
-  display: none;
-  flex-directions: column;
-  
+#chat {  
   background-color: #111;
   background-image: url("images/chatbackground.png");
   background-size: contain;
@@ -88,6 +82,7 @@ h1 {
   cursor: pointer;
 }
   
+
 
 
 
