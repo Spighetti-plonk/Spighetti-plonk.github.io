@@ -55,7 +55,7 @@ h1 {
 
 #chatHeader {
   padding: 10px;
-  background: #333;
+  background: transparent;
   text-align: center;
   fon-weight: bold;
 }
@@ -65,13 +65,22 @@ h1 {
   flex: 1;
   padding: 10px;
   overflow-y: auto;
-  background: #1a1a1a;
+  width: 400px;
+  height: 500px;
+
+  background-image: url("images/chatbackground.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 /* pasekl dolny */
 #inputBar {
   display: flex;
-  background: #333;
+  background: transparent;
 }
 
 #inpuBar input {
@@ -86,6 +95,7 @@ h1 {
   cursor: pointer;
 }
   
+
 
 
 
