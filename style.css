@@ -104,7 +104,15 @@ h1 {
   border: none;
   cursor: pointer;
 }
+/*użytkowicy online*/
+#usersOnline {
+  width: 120px;
+  padding: 20px;
+  color: white;
+  border-left: 2px solid rgba(255,255,255,0.2);
+}
   
+
 
 
 
