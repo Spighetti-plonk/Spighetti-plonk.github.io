@@ -1,7 +1,7 @@
 /* ===== GLOBAL ===== */
 * {
   box-sizing: border-box;
-  font-family: 'Gamja Flower', cursive;
+  font-family: 'LXGW WenKai Mono TC', monospace;
   font-size: 22px;
 }
 
@@ -160,6 +160,7 @@ body {
 
 /* ===== ONLINE ===== */
 #onlineWindow {
+  font-family: 'Gamja Flower', cursive;
   width: 235px;
   height: 570px;
 
@@ -187,3 +188,4 @@ body {
   overflow-y: auto;
   color: white;
 }
+
