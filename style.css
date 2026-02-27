@@ -40,8 +40,8 @@ body {
 /* ===== CIEŃ ===== */
 #shadow {
   position: absolute;
-  width: 1200px;
-  height: 935px;
+  width: 1300px;
+  height: 950px;
 
   background-image: url("images/window-shadow.png");
   background-size: cover;
@@ -197,4 +197,5 @@ body {
   overflow-y: auto;
   color: white;
 }
+
 
