@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   font-family: 'Gamja Flower', cursive;
+  font-size: 30px;
 }
 
 body {
@@ -101,6 +102,7 @@ h1 {
   cursor: pointer;
 }
   
+
 
 
 
