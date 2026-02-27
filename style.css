@@ -4,15 +4,7 @@
 }
 
 body {
-  background: #111;
-  color: white;
-  height: 100vh;
-  margin: 0;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* środek w pionie */
-  align-items: center;     /* środek w poziomie */
+  background: red !important;
 }
 
 h1 {
@@ -84,6 +76,7 @@ h1 {
   cursor: pointer;
 }
   
+
 
 
 
