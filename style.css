@@ -104,7 +104,22 @@ h1 {
   border: none;
   cursor: pointer;
 }
-/*użytkowicy online*/
+
+/* ŚRODEK CZATU */
+#chatBody {
+  flex: 1;
+  display: flex;
+}
+
+/* WIADOMOŚCI */
+#messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  color: white;
+}
+
+/* UŻYTKOWNICY ONLINE */
 #usersOnline {
   width: 120px;
   padding: 20px;
@@ -112,6 +127,7 @@ h1 {
   border-left: 2px solid rgba(255,255,255,0.2);
 }
   
+
 
 
 
