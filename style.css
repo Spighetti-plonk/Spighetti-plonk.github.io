@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   font-family: 'Gamja Flower', cursive;
-  font-size: 30px;
+  font-size: 22px;
 }
 
 body {
@@ -61,7 +61,7 @@ h1 {
 
 #chatHeader {
   color: white;
-  padding: 10px;
+  padding: 50px;
   background: transparent;
   text-align: center;
   font-weight: bold;
@@ -75,7 +75,7 @@ h1 {
   padding: 55px;
   overflow-y: auto;
   background: none;
-  max-height: 80%;
+  max-height: 60%;
   max-width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -83,6 +83,7 @@ h1 {
 
 /* pasekl dolny */
 #inputBar {
+  padding: 10px;
   text-align: center;
   display: ;
   background: transparent;
@@ -91,12 +92,14 @@ h1 {
 #inpuBar input {
   text-align: center;
   flex: 1;
-  padding: 10px;
+  padding: px;
   border: none;
 }
 
 #inputBar button {
   text-align: center;
+  color: black;
+  background-color: white;
   padding: 10px;
   border: none;
   cursor: pointer;
