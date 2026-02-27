@@ -12,25 +12,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const onlineUsers = [];
 
   // LOGOWANIE
-  loginBtn.addEventListener("click", () => {
-    const username = usernameInput.value.trim();
-    if (!username) {
-      alert("Podaj nazwę");
-      return;
-    }
+loginBtn.addEventListener("click", () => {
+  const username = usernameInput.value.trim();
+  if (!username) {
+    alert("Podaj nazwę");
+    return;
+  }
 
-    currentUser = username;
+  currentUser = username;
 
-    if (!onlineUsers.includes(username)) {
-      olineUsers.push(username);
-    }
-    
-    updateUsersOnline();
+  if (!onlineUsers.includes(username)) {
+    onlineUsers.push(username);
+  }
 
-    loginDiv.style.display = "none";
-    chatDiv.style.display = "flex";
-    
-  });
+  loginDiv.style.display = "none";
+  chatDiv.style.display = "flex";
+
+  updateUsersOnline();
+});
   
   usernameInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
@@ -62,17 +61,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   
-  function updateUsersOnline() {
-    const userDiv = document.getElementById("usersOnline");
-    usersDiv.innerHTML = "<b>Online:</b><br>;
+function updateUsersOnline() {
+  const usersDiv = document.getElementById("usersOnline");
+  if (!usersDiv) return; 
 
-     onlineUsers.forEach(user => {
-       const div = document.createElement("div");
-       div.textContent = user;
-       usersDiv.appendChild(div);
-     });
-  }
-});
+  usersDiv.innerHTML = "<b>Online:</b><br>";
+
+  onlineUsers.forEach(user => {
+    const div = document.createElement("div");
+    div.textContent = user;
+    usersDiv.appendChild(div);
+  });
+}
+
 
 
 
