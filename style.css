@@ -42,7 +42,6 @@ h1 {
   display: none;
   flex-direction: column;
 
-  background-color: #111;
   background-image: url("images/chatbackground.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -86,6 +85,7 @@ h1 {
   cursor: pointer;
 }
   
+
 
 
 
