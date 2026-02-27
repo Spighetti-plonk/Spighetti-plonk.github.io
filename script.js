@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sendBtn = document.getElementById("send");
 
   let currentUser = "";
+  const onlineUsers = [];
 
   // LOGOWANIE
   loginBtn.addEventListener("click", () => {
@@ -19,8 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     currentUser = username;
+
+    if (!onlineUsers.includes(username)) {
+      olineUsers.push(username);
+    }
+    updateUsersOnline();
+
     loginDiv.style.display = "none";
     chatDiv.style.display = "flex";
+    
   });
   
   usernameInput.addEventListener("keydown", (e) => {
@@ -52,7 +60,18 @@ document.addEventListener("DOMContentLoaded", () => {
       sendMessage();
     }
   });
+  function updateUsersOnline() {
+    const userDiv = document.getElementById("usersOnline");
+    usersDiv.innerHTML = "<b>Online:</b><br>;
+
+     onlineUsers.forEach(user => {
+       const div = document.createElement("div");
+       div.textContent = user;
+       usersDiv.appendChild(div);
+     });
+  }
 });
+
 
 
 
