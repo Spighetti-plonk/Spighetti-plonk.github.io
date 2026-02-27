@@ -40,8 +40,8 @@ body {
 /* ===== CIEŃ ===== */
 #shadow {
   position: absolute;
-  width: 1100px;
-  height: 835px;
+  width: 1200px;
+  height: 935px;
 
   background-image: url("images/window-shadow.png");
   background-size: cover;
@@ -67,7 +67,7 @@ body {
 /* ===== LEWE PRZYCISKI ===== */
 #leftMenu {
   width: 110px;
-  margin-left: 20px;
+  margin-left: 40px;
 
   display: flex;
   flex-direction: column;
@@ -133,10 +133,11 @@ body {
 
 /* ===== INFO ===== */
 #infoWindow {
+  color: white;
   width: 275px;
   height: 585px;
 
-  margin-left: 16px;
+  margin-left: 1px;
 
   background-image: url("images/info.png");
   background-size: cover;
@@ -146,13 +147,14 @@ body {
 }
 
 .infoHeader {
-  padding: 12px;
+  font-size: 30px;
+  padding: 40px;
   text-align: center;
   font-weight: bold;
 }
 
 .infoContent {
-  padding: 12px;
+  padding: 50px;
   flex: 1;
 }
 
@@ -161,8 +163,8 @@ body {
   width: 235px;
   height: 570px;
 
-  margin-left: 16px;
-  margin-right: 20px;
+  margin-left: 1px;
+  margin-right: 50px;
 
   background-image: url("images/online.png");
   background-size: cover;
@@ -179,6 +181,8 @@ body {
 
 #usersOnline {
   flex: 1;
+  text-align: center;
+  margin-top: 70px;
   padding: 10px;
   overflow-y: auto;
   color: white;
