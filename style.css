@@ -109,6 +109,8 @@ body {
 
 #messages {
   flex: 1;
+  text-align: left;
+  margin-left: 20px;
   padding: 16px;
   overflow-y: auto;
   color: white;
@@ -117,18 +119,22 @@ body {
 
 #inputBar {
   display: flex;
-  gap: 8px;
+  gap: 1px;
   padding: 12px;
 }
 
 #inputBar input {
   flex: 1;
-  padding: 8px;
+  padding: 1px;
+  max-width: 200px;
+  margin-left: 60px;
+  margin-bottom: 20px;
 }
 
 #inputBar button {
-  padding: 8px 14px;
+  padding: 7px 14px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 /* ===== INFO ===== */
