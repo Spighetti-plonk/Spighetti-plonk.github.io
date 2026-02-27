@@ -4,13 +4,21 @@
 }
 
 body {
-  background: #111;
-  color: white;
-  height: 100vh;
-  margin: 0;
-
+  width: 1920px;
+  height: 1080px;
   display: flex;
   flex-direction: column;
+
+  background-image: url("images/backgroundw.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
   justify-content: center; /* środek w pionie */
   align-items: center;     /* środek w poziomie */
 }
@@ -37,8 +45,8 @@ h1 {
 
 /* CZAT */
 #chat {
-  width: 400px;
-  height: 500px;
+  width: 600px;
+  height: 700px;
   display: none;
   flex-direction: column;
 
@@ -86,6 +94,7 @@ h1 {
   cursor: pointer;
 }
   
+
 
 
 
