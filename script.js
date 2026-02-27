@@ -13,9 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentUser = "";
   const onlineUsers = [];
 
-  // START: ukryj czat
-  chatDiv.style.display = "none";
-
   // LOGOWANIE
   loginBtn.addEventListener("click", () => {
     const username = usernameInput.value.trim();
@@ -74,3 +71,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
