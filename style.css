@@ -4,13 +4,11 @@
 }
 
 body {
-  width: 1920px;
-  height: 1080px;
   display: flex;
   flex-direction: column;
 
   background-image: url("images/backgroundw.png");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
@@ -45,13 +43,12 @@ h1 {
 
 /* CZAT */
 #chat {
-  width: 600px;
-  height: 700px;
+  width: 450px;
+  height: 600px;
   display: none;
   flex-direction: column;
 
   background-image: url("images/chatbackground.png");
-  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
@@ -65,30 +62,41 @@ h1 {
   padding: 10px;
   background: transparent;
   text-align: center;
-  fon-weight: bold;
+  font-weight: bold;
 }
 
 /* wiadomości */
 #messages {
+  text-align: center;
+  color: white;
   flex: 1;
+  padding-left: 20px;
+  padding-right: 20px;
   padding: 10px;
   overflow-y: auto;
   background: none;
+  max-height: 80%;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* pasekl dolny */
 #inputBar {
-  display: flex;
+  text-align: center;
+  display: ;
   background: transparent;
 }
 
 #inpuBar input {
+  text-align: center;
   flex: 1;
   padding: 10px;
   border: none;
 }
 
 #inputBar button {
+  text-align: center;
   padding: 10px;
   border: none;
   cursor: pointer;
