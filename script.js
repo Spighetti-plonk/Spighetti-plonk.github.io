@@ -73,6 +73,9 @@ function updateUsersOnline() {
     usersDiv.appendChild(div);
   });
 }
+  
+});
+
 
 
 
