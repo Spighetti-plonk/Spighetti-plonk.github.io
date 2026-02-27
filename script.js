@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!onlineUsers.includes(username)) {
       olineUsers.push(username);
     }
+    
     updateUsersOnline();
 
     loginDiv.style.display = "none";
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       sendMessage();
     }
   });
+  
   function updateUsersOnline() {
     const userDiv = document.getElementById("usersOnline");
     usersDiv.innerHTML = "<b>Online:</b><br>;
@@ -71,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
      });
   }
 });
+
 
 
 
