@@ -1,3 +1,4 @@
+/* ===== GLOBAL ===== */
 * {
   box-sizing: border-box;
   font-family: 'Gamja Flower', cursive;
@@ -5,29 +6,23 @@
 }
 
 body {
+  margin: 0;
+  height: 100vh;
+
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   background-image: url("images/backgroundw.png");
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
-  background-color: transparent;
-
-  border-radius: 12px;
-  overflow: hidden;
-  height: 100vh;
-  margin: 0;
-  justify-content: center; /* środek w pionie */
-  align-items: center;     /* środek w poziomie */
 }
 
-h1 {
-  margin-bottom: 20px;
-}
-
-/* LOGOWANIE */
+/* ===== LOGOWANIE ===== */
 #login {
+  position: absolute;
+  z-index: 10;
+
   background: #222;
   padding: 20px;
   border-radius: 10px;
@@ -42,111 +37,19 @@ h1 {
   margin-left: 10px;
 }
 
-/* CZAT */
-#chat {
-  width: 450px;
-  height: 600px;
-  display: none;
-  flex-direction: column;
-
-  background-image: url("images/chatbackground.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-
-  border-radius: 12px;
-  overflow: hidden;
-}
-/*nagłowek*/
-
-#chatHeader {
-  color: white;
-  padding: 50px;
-  background: transparent;
-  text-align: center;
-  font-weight: bold;
-}
-
-/* wiadomości */
-#messages {
-  text-align: left;
-  color: white;
-  flex: 1;
-  padding: 55px;
-  overflow-y: auto;
-  background: none;
-  max-height: 60%;
-  max-width: 100%;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-/* pasekl dolny */
-#inputBar {
-  padding: 10px;
-  text-align: center;
-  display: ;
-  background: transparent;
-}
-
-#inpuBar input {
-  text-align: center;
-  flex: 1;
-  padding: px;
-  border: none;
-}
-
-#inputBar button {
-  text-align: center;
-  color: black;
-  background-color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-}
-
-/* ŚRODEK CZATU */
-#chatBody {
-  flex: 1;
-  display: flex;
-}
-
-/* WIADOMOŚCI */
-#messages {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  color: white;
-}
-
-/* UŻYTKOWNICY ONLINE */
-#usersOnline {
-  width: 120px;
-  padding: 20px;
-  color: white;
-  border-left: 2px solid rgba(255,255,255,0.2);
-}
-
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-image: url("images/backgroundw.png");
-  background-size: cover;
-}
-
+/* ===== CIEŃ ===== */
 #shadow {
   position: absolute;
   width: 1100px;
   height: 835px;
+
   background-image: url("images/window-shadow.png");
   background-size: cover;
+
   z-index: 1;
 }
 
+/* ===== GŁÓWNE OKNO ===== */
 #mainWindow {
   position: relative;
   width: 1100px;
@@ -161,12 +64,15 @@ body {
   z-index: 2;
 }
 
+/* ===== LEWE PRZYCISKI ===== */
 #leftMenu {
-  width: 120px;
+  width: 110px;
+  margin-left: 20px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
 .menuBtn {
@@ -179,9 +85,12 @@ body {
   height: 125px;
 }
 
+/* ===== CZAT ===== */
 #chat {
   width: 420px;
   height: 570px;
+
+  margin-left: 16px;
 
   display: flex;
   flex-direction: column;
@@ -189,21 +98,45 @@ body {
   background-image: url("images/chatbackground.png");
   background-size: cover;
 
-  margin-left: 20px;
+  border-radius: 12px;
+}
+
+#chatHeader {
+  text-align: center;
+  padding: 16px;
+  color: white;
 }
 
 #messages {
   flex: 1;
-  padding: 20px;
+  padding: 16px;
   overflow-y: auto;
   color: white;
+  word-wrap: break-word;
 }
 
+#inputBar {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+}
+
+#inputBar input {
+  flex: 1;
+  padding: 8px;
+}
+
+#inputBar button {
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+/* ===== INFO ===== */
 #infoWindow {
   width: 275px;
   height: 585px;
 
-  margin-left: 20px;
+  margin-left: 16px;
 
   background-image: url("images/info.png");
   background-size: cover;
@@ -213,21 +146,23 @@ body {
 }
 
 .infoHeader {
-  padding: 15px;
+  padding: 12px;
   text-align: center;
   font-weight: bold;
 }
 
 .infoContent {
-  padding: 15px;
+  padding: 12px;
   flex: 1;
 }
 
+/* ===== ONLINE ===== */
 #onlineWindow {
   width: 235px;
   height: 570px;
 
-  margin-left: 20px;
+  margin-left: 16px;
+  margin-right: 20px;
 
   background-image: url("images/online.png");
   background-size: cover;
