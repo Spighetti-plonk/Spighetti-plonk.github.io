@@ -160,13 +160,15 @@ body {
 }
 
 .infoContent {
-  padding: 50px;
+  padding: 20px;
+  margin-left:30px;
   flex: 1;
 }
 
 /* ===== ONLINE ===== */
 #onlineWindow {
   font-family: 'Gamja Flower', cursive;
+  color: white;
   width: 235px;
   height: 570px;
 
@@ -183,13 +185,14 @@ body {
 .onlineHeader {
   text-align: center;
   padding: 10px;
+  margin-top: 25px;
   font-weight: bold;
 }
 
 #usersOnline {
   flex: 1;
   text-align: center;
-  margin-top: 70px;
+  margin-top: 50px;
   padding: 10px;
   overflow-y: auto;
   color: white;
