@@ -198,4 +198,16 @@ body {
   color: white;
 }
 
+/* ====== Sroll tła ======*/
+#mainWindow.scrollMode {
+  flex-direction: column;
+  align-items: flex-start;
+
+  height: auto;
+  min-height: 835px;
+
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+}
+
 
