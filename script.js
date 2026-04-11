@@ -93,5 +93,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function showChat() {
+    chatDiv.style.display = "flex";
+    infoWindow.style.display = "flex";
+    onlineWindow.style.display = "flex";
+
+    mainWindow.classList.remove("scrollMode");
+    mainWindow.style.backgroundImage = 'url("images/main-window.png")';
+  }
+    
+
 });
 
