@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const infoWindow = document.getElementById("infoWindow");
   const onlineWindow = document.getElementById("onlineWindow");
 
-  const placeholder = document.getElementById("placeholder");
+  const placeHolder = document.getElementById("placeHolder");
   
   const loginDiv = document.getElementById("login");
   const loginBtn = document.getElementById("loginBtn");
