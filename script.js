@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   msgInput.value = "";
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
-}
+  }
 
   sendBtn.addEventListener("click", sendMessage);
 
