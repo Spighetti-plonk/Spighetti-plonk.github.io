@@ -40,21 +40,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // WYSYŁANIE WIADOMOŚCI
-  function sendMessage() {
-    if (!currentUser) {
-      alert("Log in first");
-      return;
+ function sendMessage() {
+  if (!currentUser) {
+    alert("Log in first");
+    return;
   }
-    const text = msgInput.value.trim();
-    if (!text) return;
 
-    const div = document.createElement("div");
-    div.textContent = `${currentUser}: ${text}`;
-    messageDiv.appendChild(div);
+  const text = msgInput.value.trim();
+  if (!text) return;
 
-    msgInput.value = "";
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-  }
+  const div = document.createElement("div");
+  div.textContent = `${currentUser}: ${text}`;
+  messagesDiv.appendChild(div);
+
+  msgInput.value = "";
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
 
   sendBtn.addEventListener("click", sendMessage);
 
