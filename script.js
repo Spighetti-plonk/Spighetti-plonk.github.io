@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const onlineUsers = [];
 
   // LOGOWANIE
-    chatDiv.style.display = "none";
     msgInput.disabled = true;
     sendBtn.disabled = true;
   
@@ -34,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loginDiv.style.display = "none";
     chatDiv.style.display = "flex";
     msgInput.disabled = false;
-    sendBtn.diabled = flase;
+    sendBtn.diabled = false;
     msgInput.focus();
     
 
