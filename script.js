@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loginBtn.addEventListener("click", () => {
     const username = usernameInput.value.trim();
     if (!username) {
-      alert("Podaj nazwę");
+      alert("Input username");
       return;
     }
 
