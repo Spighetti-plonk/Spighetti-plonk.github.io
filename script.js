@@ -1,9 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  const btnChat = document.getElementById("btnChat");
+  const btnLinks = document.getElementById("btnLinks");
+  const btnUpdates = document.getElementById("btnUpdates");
+
+  const mainWindow = document.getElementById("mainWindow");
+  const infoWindow = document.getElementById("infoWindow");
+  const onlineWindow = document.getElementById("onlineWindow");
+
+  const placeholder = document.getElementById("placeholder");
+  
   const loginDiv = document.getElementById("login");
   const loginBtn = document.getElementById("loginBtn");
   const usernameInput = document.getElementById("username");
-
+  
   const chatDiv = document.getElementById("chat");
   const messagesDiv = document.getElementById("messages");
   const msgInput = document.getElementById("msg");
