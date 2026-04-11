@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const onlineUsers = [];
 
   // LOGOWANIE
+    chatDiv.style.display = "none";
+    msgInput.disabled = true;
+    sendBtn.disabled = true;
+  
   loginBtn.addEventListener("click", () => {
     const username = usernameInput.value.trim();
     if (!username) {
@@ -29,6 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loginDiv.style.display = "none";
     chatDiv.style.display = "flex";
+    msgInput.disabled = false;
+    sendBtn.diabled = flase;
+    msgInput.focus();
+    
 
     updateUsersOnline();
   });
