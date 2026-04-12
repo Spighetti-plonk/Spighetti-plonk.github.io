@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  const shadow = document.getElementById("shadow");
+
+  mainWindow.style.display = "none";
+  shadow.style.display ="none";
+  
   const btnChat = document.getElementById("btnChat");
   const btnLinks = document.getElementById("btnLinks");
   const btnUpdates = document.getElementById("btnUpdates");
@@ -56,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       mainWindow.classList.add("active");
     }, 10);
+    shadow.style.display = "block";
     msgInput.disabled = false;
     sendBtn.disabled = false;
     msgInput.focus();
@@ -113,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mainWindow.classList.remove("scrollMode");
     mainWindow.style.height = "835px";
-    mainWindow.style.backgroundImage = 'url("images/main-window.png")';
+    mainWindow.style.backgroundImage = 'url("images/plink.gif")';
   }
 
   function showLinks() {
@@ -123,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mainWindow.classList.add("scrollMode");
     mainWindow.style.minHeight = "1400px";
-    mainWindow.style.backgroundImage = 'url("images/streachy-bg.png")';
+    mainWindow.style.backgroundImage = 'url("images/plink.gif")';
   }
   
   function showUpdates() {
@@ -133,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mainWindow.classList.add("scrollMode");
     mainWindow.style.minHeight = "1600px";
-    mainWindow.style.backgroundImage = 'url("images/streachy-bg.png")';
+    mainWindow.style.backgroundImage = 'url("images/plink.gif")';
   }
 
   function setImageWithFallback(imgElement, src, fallback) {
