@@ -27,16 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   btnChat.addEventListener("click", showChat);
   btnLinks.addEventListener("click", showLinks);
   btnUpdates.addEventListener("click", showUpdates);
-
-  btnLinks.addEventListener("click", () => {
-  console.log("LINKS CLICK");
-  showLinks();
-});
-
-btnUpdates.addEventListener("click", () => {
-  console.log("UPDATES CLICK");
-  showUpdates();
-});
   // TEMPORARY END
   
 
@@ -136,7 +126,7 @@ btnUpdates.addEventListener("click", () => {
   function showUpdates() {
     chatDiv.style.display = "none";
     infoWindow.style.display = "none";
-    onlineWindow.syle.display = "none";
+    onlineWindow.style.display = "none";
 
     mainWindow.classList.add("scrollMode");
     mainWindow.style.height = "1600px";
