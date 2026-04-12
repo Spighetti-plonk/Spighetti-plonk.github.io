@@ -23,6 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentUser = "";
   const onlineUsers = [];
 
+  btnChat.addEventListener("click", showChat);
+  btnLinks.addEventListener("click", showLinks);
+  btnUpdates.addEventListener("click", showUpdates);
+  
+
   // LOGOWANIE
     chatDiv.style.display = "flex";
     msgInput.disabled = true;
