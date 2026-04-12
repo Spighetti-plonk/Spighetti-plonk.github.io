@@ -136,7 +136,7 @@ btnUpdates.addEventListener("click", () => {
   function showUpdates() {
     chatDiv.style.display = "none";
     infoWindow.style.display = "none";
-    olineWindow.syle.display = "none";
+    onlineWindow.syle.display = "none";
 
     mainWindow.classList.add("scrollMode");
     mainWindow.style.height = "1600px";
