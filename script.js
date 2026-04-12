@@ -28,6 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
   btnUpdates.addEventListener("click", showUpdates);
   
 
+  // PLACEHOLDER-UKRYWANIE
+    placeHolder.style.display = "none";
+  
   // LOGOWANIE
     chatDiv.style.display = "flex";
     msgInput.disabled = true;
