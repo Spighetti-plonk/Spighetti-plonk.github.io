@@ -101,6 +101,15 @@ document.addEventListener("DOMContentLoaded", () => {
     mainWindow.classList.remove("scrollMode");
     mainWindow.style.backgroundImage = 'url("images/main-window.png")';
   }
+
+  function showLinks() {
+    chatDiv.style.display = "none";
+    infoWindow.style.display = "none";
+    onlineWindow.style.display = "none";
+
+    mainWindow.classList.add("scrollMode");
+    mainWindow.style.backgroundImage = 'url("images/plink.gif")';
+  }
     
 
 });
