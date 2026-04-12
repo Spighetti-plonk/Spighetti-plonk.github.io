@@ -9,8 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainWindow = document.getElementById("mainWindow");
   const infoWindow = document.getElementById("infoWindow");
   const onlineWindow = document.getElementById("onlineWindow");
-
-  const placeHolder = document.getElementById("placeHolder");
   
   const loginDiv = document.getElementById("login");
   const loginBtn = document.getElementById("loginBtn");
@@ -30,10 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
   btnLinks.addEventListener("click", showLinks);
   btnUpdates.addEventListener("click", showUpdates);
   // TEMPORARY END
-  
-
-  // PLACEHOLDER-UKRYWANIE
-    placeHolder.style.display = "none";
   
   // LOGOWANIE
     mainWindow.style.display = "none";
