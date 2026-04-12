@@ -148,5 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
   img.onerror = () => {
     img.src = "images/placeholder.gif";
   };
+  });
+  
 
 });
