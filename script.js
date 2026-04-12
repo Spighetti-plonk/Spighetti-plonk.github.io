@@ -23,9 +23,21 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentUser = "";
   const onlineUsers = [];
 
+  // TEMPORARY
   btnChat.addEventListener("click", showChat);
   btnLinks.addEventListener("click", showLinks);
   btnUpdates.addEventListener("click", showUpdates);
+
+  btnLinks.addEventListener("click", () => {
+  console.log("LINKS CLICK");
+  showLinks();
+});
+
+btnUpdates.addEventListener("click", () => {
+  console.log("UPDATES CLICK");
+  showUpdates();
+});
+  // TEMPORARY END
   
 
   // PLACEHOLDER-UKRYWANIE
