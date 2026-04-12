@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mainWindow.classList.remove("scrollMode");
     mainWindow.style.height = "835px";
-    mainWindow.style.backgroundImage = 'url("images/plink.gif")';
+    mainWindow.style.backgroundImage = 'url("images/main-window.png")';
   }
 
   function showLinks() {
