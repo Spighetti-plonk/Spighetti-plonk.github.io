@@ -208,10 +208,11 @@ body {
 
 /* ====== Sroll tła ======*/
 #mainWindow.scrollMode {
-  height: 1200px;
+  height: auto;
+  min-height: 1200px;
 
-  background-repeat: repeat-y;
-  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
