@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     onlineWindow.style.display = "none";
 
     mainWindow.classList.add("scrollMode");
-    mainWindow.style.height = "1400px";
+    mainWindow.style.minHeight = "1400px";
     mainWindow.style.backgroundImage = 'url("images/streachy-bg.png")';
   }
   
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
     onlineWindow.style.display = "none";
 
     mainWindow.classList.add("scrollMode");
-    mainWindow.style.height = "1600px";
+    mainWindow.style.minHeight = "1600px";
     mainWindow.style.backgroundImage = 'url("images/streachy-bg.png")';
   }
 
