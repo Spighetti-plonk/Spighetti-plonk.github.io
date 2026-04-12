@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     placeHolder.style.display = "none";
   
   // LOGOWANIE
-    chatDiv.style.display = "flex";
+    mainWindow.style.display = "none";
     msgInput.disabled = true;
     sendBtn.disabled = true;
   
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loginDiv.style.display = "none";
-    chatDiv.style.display = "flex";
+    mainWindow.style.display = "flex";
     msgInput.disabled = false;
     sendBtn.disabled = false;
     msgInput.focus();
