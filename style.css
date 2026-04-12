@@ -215,11 +215,11 @@ body {
 
 /* ====== Sroll tła ======*/
 #mainWindow.scrollMode {
-  height: auto;
   min-height: 1200px;
 
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: top;
 }
 
 
