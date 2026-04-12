@@ -142,7 +142,19 @@ btnUpdates.addEventListener("click", () => {
     mainWindow.style.height = "1600px";
     mainWindow.style.backgroundImage = 'url("images/streachy-bg.png")';
   }
-    
+
+  function setImageWithFallback(imgElement, src, fallback) {
+    imgElement.src = src;
+
+    imgElement.onerror = () => {
+      imgElement.src = fallback;
+    };
+  }
+
+  document.querySelectorAll("img").forEach(img => {
+  img.onerror = () => {
+    img.src = "images/placeholder.gif";
+  };
 
 });
 
