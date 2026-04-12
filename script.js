@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loginDiv.style.display = "none";
     mainWindow.style.display = "flex";
+    setTimeout(() => {
+      mainWindow.classList.add("active");
+    }, 10);
     msgInput.disabled = false;
     sendBtn.disabled = false;
     msgInput.focus();
