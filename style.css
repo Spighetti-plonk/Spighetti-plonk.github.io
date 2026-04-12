@@ -67,6 +67,13 @@ body {
   background-size: cover;
 
   z-index: 2;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#mainWindow.active {
+  opacity: 1;
 }
 
 /* ===== LEWE PRZYCISKI ===== */
