@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const shadow = document.getElementById("shadow");
-
-  mainWindow.style.display = "none";
-  shadow.style.display ="none";
   
   const btnChat = document.getElementById("btnChat");
   const btnLinks = document.getElementById("btnLinks");
@@ -40,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // LOGOWANIE
     mainWindow.style.display = "none";
+    shadow.style.display ="none";
     msgInput.disabled = true;
     sendBtn.disabled = true;
   
