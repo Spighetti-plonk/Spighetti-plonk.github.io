@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mainWindow.classList.add("scrollMode");
     mainWindow.style.minHeight = "1400px";
-    mainWindow.style.backgroundImage = 'url("images/plink.gif")';
+    mainWindow.style.backgroundImage = 'url("images/streachy-bg.png")';
   }
   
   function showUpdates() {
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mainWindow.classList.add("scrollMode");
     mainWindow.style.minHeight = "1600px";
-    mainWindow.style.backgroundImage = 'url("images/plink.gif")';
+    mainWindow.style.backgroundImage = 'url("images/streachy-bg.png")';
   }
 
   function setImageWithFallback(imgElement, src, fallback) {
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll("img").forEach(img => {
   img.onerror = () => {
-    img.src = "images/plink.gif";
+    img.src = "images/streachy-bg.png";
   };
   });
   
